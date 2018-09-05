@@ -10,12 +10,8 @@ from distutils.errors import CCompilerError, DistutilsExecError, \
     DistutilsPlatformError
 
 
-try:
-    from Cython.Build import cythonize
-except ImportError:
-    have_cython = False
-else:
-    have_cython = True
+from Cython.Build import cythonize
+have_cython = True
 
 
 PY2 = sys.version_info[0] == 2
