@@ -43,8 +43,11 @@ try:
     from numcodecs import blosc
     from numcodecs.blosc import Blosc
     register_codec(Blosc)
-    # initialize blosc
-    ncores = multiprocessing.cpu_count()
+    # initialize blosc, failing gracefully if no multiprocessing
+    try:
+        ncores = multiprocessing.cpu_count()
+    except OSError:
+        ncores = 1
     blosc.init()
     blosc.set_nthreads(min(8, ncores))
     atexit.register(blosc.destroy)
