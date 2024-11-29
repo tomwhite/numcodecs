@@ -326,9 +326,10 @@ def compress(source, char* cname, int clevel, int shuffle=SHUFFLE,
         raise RuntimeError('error during blosc compression: %d' % cbytes)
 
     # resize after compression
-    dest = dest[:cbytes]
+    dest_mv = memoryview(dest)
+    dest_mv = dest_mv[:cbytes]
 
-    return dest
+    return dest_mv
 
 
 def decompress(source, dest=None):

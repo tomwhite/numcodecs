@@ -107,10 +107,10 @@ def compress(source, int acceleration=DEFAULT_ACCELERATION):
 
     # resize after compression
     compressed_size += sizeof(uint32_t)
-    dest = dest[:compressed_size]
+    dest_mv = memoryview(dest)
+    dest_mv = dest_mv[:compressed_size]
 
-    return dest
-
+    return dest_mv
 
 def decompress(source, dest=None):
     """Decompress data.

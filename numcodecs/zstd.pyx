@@ -143,9 +143,10 @@ def compress(source, int level=DEFAULT_CLEVEL, bint checksum=False):
         raise RuntimeError('Zstd compression error: %s' % error)
 
     # resize after compression
-    dest = dest[:compressed_size]
+    dest_mv = memoryview(dest)
+    dest_mv = dest_mv[:compressed_size]
 
-    return dest
+    return dest_mv
 
 
 def decompress(source, dest=None):
