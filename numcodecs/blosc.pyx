@@ -328,8 +328,9 @@ def compress(source, char* cname, int clevel, int shuffle=SHUFFLE,
     # resize after compression
     dest_mv = memoryview(dest)
     dest_mv = dest_mv[:cbytes]
+    dest_arr = np.asarray(dest_mv)
 
-    return dest_mv
+    return dest_arr
 
 
 def decompress(source, dest=None):
