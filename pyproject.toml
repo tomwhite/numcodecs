@@ -155,7 +155,7 @@ filterwarnings = [
 ]
 
 [tool.cibuildwheel]
-enable = ["cpython-freethreading"]
+enable = ["cpython-prerelease", "cpython-freethreading"]
 environment = { DISABLE_NUMCODECS_AVX2=1 }
 [tool.cibuildwheel.macos]
 environment = { MACOSX_DEPLOYMENT_TARGET=10.9, DISABLE_NUMCODECS_AVX2=1, CFLAGS="$CFLAGS -Wno-implicit-function-declaration" }
