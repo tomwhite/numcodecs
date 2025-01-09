@@ -19,8 +19,9 @@ jobs:
       CIBW_PRERELEASE_PYTHONS: true
       CIBW_FREE_THREADED_SUPPORT: true
       CIBW_TEST_COMMAND: python -c "import numcodecs"
-      CIBW_BUILD: "cp313-* cp313t-*"
+      CIBW_BUILD: "cp313t-*"
       CIBW_SKIP: "pp* *-musllinux_* *win32 *_i686 *_s390x"
+      CIBW_BEFORE_BUILD: "{package}/scripts/cibw_before_build.sh"
       CIBW_BUILD_FRONTEND: 'pip; args: --pre --extra-index-url "https://pypi.anaconda.org/scientific-python-nightly-wheels/simple"'
       # note: CIBW_ENVIRONMENT is now set in pyproject.toml
 
@@ -28,9 +29,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
-
-      - name: Install cython night that supports free-threaded python
-        run: pip install -i https://pypi.anaconda.org/scientific-python-nightly-wheels/simple cython
 
       - uses: pypa/cibuildwheel@v2.22.0
 
