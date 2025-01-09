@@ -21,7 +21,7 @@ jobs:
       CIBW_TEST_COMMAND: python -c "import numcodecs"
       CIBW_BUILD: "cp313t-*"
       CIBW_SKIP: "pp* *-musllinux_* *win32 *_i686 *_s390x"
-      CIBW_BEFORE_BUILD: "{package}/scripts/cibw_before_build.sh"
+      CIBW_BEFORE_BUILD: "bash {package}/scripts/cibw_before_build.sh"
       CIBW_BUILD_FRONTEND: 'pip; args: --pre --extra-index-url "https://pypi.anaconda.org/scientific-python-nightly-wheels/simple"'
       # note: CIBW_ENVIRONMENT is now set in pyproject.toml
 
