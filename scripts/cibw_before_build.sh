@@ -3,4 +3,5 @@ FREE_THREADED_BUILD="$(python -c"import sysconfig; print(bool(sysconfig.get_conf
 if [[ $FREE_THREADED_BUILD == "True" ]]; then
     python -m pip install -U pip
     python -m pip install -i https://pypi.anaconda.org/scientific-python-nightly-wheels/simple cython
+    python -m pip install "setuptools>=64" "setuptools-scm[toml]>=6.2" py-cpuinfo "numpy>2"
 fi
